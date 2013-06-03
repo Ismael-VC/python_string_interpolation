@@ -52,7 +52,6 @@ def interpolate(format_string=str(),sequence=None,scope='local',returns=False):
     format = 'format_string.format(**sequence)'
     if returns is False:
         print eval(format)
-
     elif returns is True:
         return eval(format)
 
