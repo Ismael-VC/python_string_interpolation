@@ -34,7 +34,7 @@ def interpolate(format_string=str(),sequence=None,scope='local',returns=False):
     Prints format_string interpolated with the contents of sequence.
 
     format_string: string to be formated with embeded keyword conversion targets: {}
-    sequence: dictionary containing the variables to be substituted in the 
+    sequence: dictionary containing the variables to be substituted in the
                   format_string.
     scope: string specifying which namespace to use, options are, 'l' or 'local'
            and 'g' or 'global'. (Case insensitive)
@@ -45,15 +45,12 @@ def interpolate(format_string=str(),sequence=None,scope='local',returns=False):
 
     if type(sequence) is str:
         scope = sequence
-        sequence = get_scope(scope)
-    else:
-        if not sequence:
-            sequence = get_scope(scope)
+    sequence = get_scope(scope)
 
     format = 'format_string.format(**sequence)'
     if returns is False:
         print eval(format)
-        
+
     elif returns is True:
         return eval(format)
 
@@ -67,7 +64,7 @@ name = 'Maruja'
 if __name__ == '__main__':
 
     import time
-    
+
     # I found this elsewhere.
     def print_timing(func):
         def wrapper(*arg):
@@ -79,16 +76,16 @@ if __name__ == '__main__':
             return res
         return wrapper
 
-    @print_timing    
+    @print_timing
     def interpolation_test():
         print '\nstring_interpolation test:\n'
         print 'First\ttest\tEmpty string:'
         interpolate()
 
         # handle error?
-        # interpolate('{}')   
+        # interpolate('{}')
 
-        interpolate('Second\ttest:\tNullifying effect. {{}}')  
+        interpolate('Second\ttest:\tNullifying effect. {{}}')
         interpolate('Third\ttest:\tHello my name is {{name}}.')
         interpolate('Second\ttest:\tWithout conversion target.')
 
@@ -96,9 +93,9 @@ if __name__ == '__main__':
         # strings and also from several sequences at the same time?
         names = ['Alejandro', 'Jessica', 'Luis']
         interpolate('''Fourth\ttest:\tHello my name is {names[0]}.
-\t\t...no! wait my name is {names[2]},       
-\t\tjust kidding my name is {names[0]}!''') 
-        
+\t\t...no! wait my name is {names[2]},
+\t\tjust kidding my name is {names[0]}!''')
+
         # nonlocal in python 3.x? to interpolate 'Israel'
         name = 'Israel'
         def inner_1():
@@ -106,10 +103,10 @@ if __name__ == '__main__':
         inner_1()
 
         name = ('Ismael',)
-        message_1 = interpolate('Sixth\ttest:\tHello my name is {name[0]}.', 
+        message_1 = interpolate('Sixth\ttest:\tHello my name is {name[0]}.',
                                     returns=True)
-        print message_1        
-        
+        print message_1
+
         message_2 = interpolate('Seventh\ttest:\tHello my name is {name}.',
                                 {'name': 'Oscar'}, returns=True)
         print message_2
@@ -119,6 +116,7 @@ if __name__ == '__main__':
             message_4 = interpolate('Eigth\ttest:\tHello my name is {name}.\n',
                                     returns=True)
             print message_4
-        inner_2()     
-   
+        inner_2()
+
+
     interpolation_test()
