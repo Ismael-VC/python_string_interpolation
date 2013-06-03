@@ -45,7 +45,9 @@ def interpolate(format_string=str(),sequence=None,scope='local',returns=False):
 
     if type(sequence) is str:
         scope = sequence
-    sequence = get_scope(scope)
+        sequence = get_scope(scope)
+    elif not sequence:
+        sequence = get_scope(scope)
 
     format = 'format_string.format(**sequence)'
     if returns is False:
@@ -104,7 +106,7 @@ if __name__ == '__main__':
 
         name = ('Ismael',)
         message_1 = interpolate('Sixth\ttest:\tHello my name is {name[0]}.',
-                                    returns=True)
+                                returns=True)
         print message_1
 
         message_2 = interpolate('Seventh\ttest:\tHello my name is {name}.',
