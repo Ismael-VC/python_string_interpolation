@@ -3,8 +3,6 @@
 '''
 string_interpolation 0.5 (Tested on python 2.7.3):
 
-Ismael VC           < ismael.vc1337@gmail.com >             May-2013
-
 This module provides a simple tool, that eases some of the complexity
 of formatting many strings, using a string interpolation aproach.
 
@@ -13,6 +11,8 @@ help(interpolate)
 
 import sys
 
+
+__author__ = 'Ismael Venegas Castelló    < ismael.vc1337@gmail.com >'
 
 def get_scope(scope):
     scope = scope.lower()
